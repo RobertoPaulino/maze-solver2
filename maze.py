@@ -23,6 +23,7 @@ class Maze():
         self._create_cells()
         self._break_entrance_and_exit()
         self._break_walls_r(0,0)
+        self._reset_visited()
 
     def _create_cells(self):
         for i in range(self._num_cols):
@@ -121,3 +122,8 @@ class Maze():
             current.has_right_wall = False
         else:
             raise Exception(f"Error in the direction provided to wall update function, received: {dir}")
+    
+    def _reset_visited(self):
+        for col in self._cells:
+            for cell in col:
+                cell._visited = False
