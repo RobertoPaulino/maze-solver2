@@ -10,6 +10,7 @@ class Cell:
         self._y1 = None
         self._y2 = None
         self._win = win
+        self._visited = False
         
     def draw(self, x1, y1, x2, y2):
         #assign the values for each coordinate
@@ -30,25 +31,36 @@ class Cell:
         if self.has_left_wall:
             left_wall = Line(top_left, bottom_left)
             self._win.draw_line(left_wall)
+        else:
+            left_wall = Line(top_left, bottom_left)
+            self._win.draw_line(left_wall, "#d9d9d9")
             
         #check if there is a right wall
         #create the Line() and draw it.
         if self.has_right_wall:
             right_wall = Line(top_right, bottom_right)
             self._win.draw_line(right_wall)
-            
+        else:
+            right_wall = Line(top_right, bottom_right)
+            self._win.draw_line(right_wall, "#d9d9d9")
 
         #check if there is a left wall
         #create the Line() and draw it.
         if self.has_top_wall:
             top_wall = Line(top_left, top_right)
             self._win.draw_line(top_wall)
+        else:
+            top_wall = Line(top_left, top_right)
+            self._win.draw_line(top_wall, "#d9d9d9")
 
         #check if there is a left wall
         #create the Line() and draw it.
         if self.has_bottom_wall:
             bottom_wall = Line(bottom_right, bottom_left)
             self._win.draw_line(bottom_wall)
+        else:
+            bottom_wall = Line(bottom_right, bottom_left)
+            self._win.draw_line(bottom_wall, "#d9d9d9")
         
     def draw_move(self, to_cell, undo=False):
 
